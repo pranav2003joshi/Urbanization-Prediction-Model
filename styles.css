@@ -1,0 +1,116 @@
+/* Apply a soft gradient background */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f1f1f1, #c8e0e4);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+/* Center the container and give it some padding */
+.container {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+}
+
+/* Style the header */
+h1 {
+    color: #007b7f;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Style labels and inputs */
+form label {
+    font-weight: bold;
+    display: block;
+    margin-top: 1rem;
+    color: #555;
+}
+
+input[type="file"] {
+    margin-top: 0.5rem;
+    padding: 0.3rem;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Style the submit button */
+button[type="submit"] {
+    background-color: #007b7f;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1.5rem;
+}
+
+button[type="submit"]:hover {
+    background-color: #005b5f;
+}
+
+/* Results section styling */
+.results {
+    margin-top: 2rem;
+    text-align: left;
+}
+
+/* Style the pixel count list */
+.results h2 {
+    color: #007b7f;
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.results ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.results ul li {
+    background: #f9f9f9;
+    margin-bottom: 0.5rem;
+    padding: 0.6rem;
+    border-radius: 6px;
+    color: #333;
+}
+
+/* Style the labeled images */
+.output-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.image-container {
+    text-align: center;
+    width: 150px;
+}
+
+.image-container h3 {
+    font-size: 1rem;
+    color: #007b7f;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

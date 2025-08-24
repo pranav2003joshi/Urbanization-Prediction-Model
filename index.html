@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urbanization Analysis</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .thumbnail {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Urbanization Detection and Analysis</h2>
+        <form action="/" method="POST" enctype="multipart/form-data" class="mt-4">
+            <div class="form-group">
+                <label for="mask_file1">Prediction of Image 1</label>
+                <input type="file" name="mask_file1" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="original_file1">Original Image 1</label>
+                <input type="file" name="original_file1" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="mask_file2">Prediction of Image 2</label>
+                <input type="file" name="mask_file2" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="original_file2">Original Image 2</label>
+                <input type="file" name="original_file2" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Analyze Urbanization</button>
+        </form>
+        {% if pixel_counts1 and pixel_counts2 %}
+        <div class="mt-5">
+            <h4 class="text-center">Analysis Results</h4>
+            <table class="table table-bordered mt-3">
+                <thead>
+                    <tr>
+                        <th>Label</th>
+                        <th>Pixels in Old Image</th>
+                        <th>Pixels in New Image</th>
+                        <th>Difference</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for label, count in pixel_counts1.items() %}
+                    <tr>
+                        <td>{{ label }}</td>
+                        <td>{{ pixel_counts1[label] }}</td>
+                        <td>{{ pixel_counts2[label] }}</td>
+                        <td>{{ pixel_differences[label] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <h5 class="text-center mt-3">Urbanization Increase: {{ urbanization_percentage }}%</h5>
+        </div>
+        <div class="mt-5">
+            <h4 class="text-center">Terrain Extracted Images</h4>
+            <div class="d-flex flex-wrap justify-content-center">
+                {% for label, _ in pixel_counts1.items() %}
+                <div class="text-center m-2">
+                    <h6>{{ label | capitalize }}</h6>
+                    <a href="{{ url_for('static', filename='outputs/' + label + '.png') }}" target="_blank">
+                        <img src="{{ url_for('static', filename='outputs/' + label + '.png') }}" 
+                             alt="{{ label }}" class="thumbnail img-thumbnail">
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
